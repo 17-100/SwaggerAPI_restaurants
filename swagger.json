@@ -69,47 +69,30 @@
                 }
             }
         },
-        "/friends": {
-            "get": {
-                "tags": ["Friends"],
-                "summary": "Get all Friends in system",
+        "/restaurant/{id}": {
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "required": true,
+                    "description": "ID of restaurant that we want to delete",
+                    "type": "integer"
+                }
+            ],
+            "delete": {
+                "tags": ["Restaurants"],
+                "summary": "Delete Restaurant",
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/Friend"
-                        }
-                    }
-                }
-            }
-        },
-        "/friend": {
-            "post": {
-                "tags": ["Friends"],
-                "description": "Create new friend in system",
-                "parameters": [
-                    {
-                        "name": "friend",
-                        "in": "body",
-                        "description": "friend that we want to create",
-                        "schema": {
-                            "$ref": "#/definitions/Friend"
-                        }
-                    }
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "New friend is created",
-                        "schema": {
-                            "$ref": "#/definitions/Friend"
+                            "$ref": "#/definitions/Restaurant"
                         }
                     }
                 }
             }
         }
+  
     },
     "definitions": {
         "Restaurant": {
@@ -123,24 +106,11 @@
                     "type": "string"
                 }
             }
-        },
-        "Friend": {
-            "required": ["id", "name", "age"],
-            "properties": {
-                "id": {
-                    "type": "integer",
-                    "uniqueItems": true
-                },
-                "name": {
-                    "type": "string"
-                },
-                "age": {
-                    "type": "integer"
-                }
-            }
         }
     }
 }
+
+
 
 
 
